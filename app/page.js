@@ -1,95 +1,35 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client"
+
+import getStripe from "@/utils/get-stripe";
+import {SignedIn, SignedOut, UserButton} from "@clerk/nextjs"
+import {AppBar, Box, Button, Card, CardContent, Grid, Stack, Toolbar, Typography} from "@mui/material";
+import NavBar from "@/Components/NavBar";
+import Features from "@/Components/Features";
+import BuyMenu from "@/Components/BuyMenu";
+import BottomNav from "@/Components/BottomNav";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+      <Box maxWidth = "100%">
+        <NavBar></NavBar>
+          <Box display="flex" justifyContent="center" minHeight = "80vh" style = {{alignItems : "center"}} mt = {10}>
+              <Box textAlign = "center" mb = {20}>
+                  <Box pb = {2}>
+                      <Typography variant = "h1">
+                          Welcome to Flashcard Buddies
+                      </Typography>
+                      <Typography variant = "h5">
+                          The easiest way to create flashcards from your text
+                      </Typography>
+                  </Box>
+                  <Button variant = "contained" href = "/sign-in"> Get Started</Button>
+              </Box>
+          </Box>
+          <hr style = {{ border: 0, height: 0, borderTop: "1px solid rgba(0, 0, 0, 0.1)", borderBottom: "1px solid rgba(255, 255, 255, 0.3)"}}></hr>
+          <Features></Features>
+          <hr style = {{ border: 0, height: 0, borderTop: "1px solid rgba(0, 0, 0, 0.1)", borderBottom: "1px solid rgba(255, 255, 255, 0.3)"}}></hr>
+          <BuyMenu></BuyMenu>
+          <BottomNav></BottomNav>
+      </Box>
   );
 }
